@@ -53,10 +53,7 @@
         phone: "电话",
         website: "教师主页"
       },
-      sources: {
-        title: "信息来源",
-        text: "页面内容基于公开主页、论文记录和公开图片资料整理；正式发布前建议由课题组再次核对。"
-      }
+      sources: {}
     },
     en: {
       langName: "EN",
@@ -108,10 +105,7 @@
         phone: "Phone",
         website: "Website"
       },
-      sources: {
-        title: "Information sources",
-        text: "Public profile, publication, and image information is collected from open web sources. Please verify before formal publication."
-      }
+      sources: {}
     }
   };
 

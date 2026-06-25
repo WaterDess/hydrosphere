@@ -210,27 +210,5 @@ window.TANG_SITE = {
       textZh: "Science China Earth Sciences 文章讨论全球变化如何加剧水循环失衡与水资源危机。",
       text: "A Science China Earth Sciences article discusses how global change exacerbates water-cycle imbalance and water-resource crises."
     }
-  ],
-  sources: [
-    {
-      label: "Tsinghua faculty profile",
-      labelZh: "清华大学教师主页",
-      url: "https://faculty.dess.tsinghua.edu.cn/tangqiuhong/en/index.htm"
-    },
-    {
-      label: "UCAS faculty profile",
-      labelZh: "国科大导师主页",
-      url: "https://people.ucas.ac.cn/~0019184?language=en"
-    },
-    {
-      label: "OpenAlex author record",
-      labelZh: "OpenAlex 作者记录",
-      url: "https://openalex.org/A5028911353"
-    },
-    {
-      label: "Tsinghua Alumni Association image source",
-      labelZh: "清华校友网图片来源",
-      url: "https://www.tsinghua.org.cn/info/1014/36701.htm"
-    }
   ]
 };
