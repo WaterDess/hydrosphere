@@ -463,20 +463,6 @@
     `;
   }
 
-  function renderSources() {
-    return `
-      <footer class="site-footer">
-        <div>
-          <strong>${esc(copy.sources.title)}</strong>
-          <p>${esc(copy.sources.text)}</p>
-        </div>
-        <nav aria-label="${esc(copy.sources.title)}">
-          ${list(data.sources, (source) => `<a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(pick(source, "label"))}</a>`)}
-        </nav>
-      </footer>
-    `;
-  }
-
   const renderers = {
     home: renderHome,
     about: renderAbout,
@@ -493,5 +479,5 @@
   }
 
   setupChrome();
-  app.innerHTML = `${(renderers[page] || renderHome)()}${renderSources()}`;
+  app.innerHTML = `${(renderers[page] || renderHome)()}`;
 })();
