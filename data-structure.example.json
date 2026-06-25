@@ -1,0 +1,45 @@
+{
+  "site": {
+    "nameZh": "汤秋鸿课题组",
+    "nameEn": "Tang Research Group",
+    "unitZh": "清华大学地球系统科学系",
+    "unitEn": "Department of Earth System Science, Tsinghua University",
+    "taglineZh": "面向全球变化背景下的水循环、水资源与极端水文过程研究",
+    "taglineEn": "Water cycle, water resources, and hydrological extremes under global change"
+  },
+  "navigation": [
+    "Home",
+    "About",
+    "Research",
+    "People",
+    "Publications",
+    "News",
+    "Contact"
+  ],
+  "researchThemes": [
+    {
+      "slug": "global-water-cycle",
+      "title": "Global Water Cycle",
+      "titleZh": "全球水循环",
+      "summary": "Quantifying terrestrial water cycle changes from basin to global scales."
+    },
+    {
+      "slug": "hydrological-extremes",
+      "title": "Hydrological Extremes",
+      "titleZh": "极端水文事件",
+      "summary": "Monitoring and forecasting floods, droughts, flash droughts, and compound risks."
+    },
+    {
+      "slug": "climate-change-impacts",
+      "title": "Climate Change Impacts",
+      "titleZh": "气候变化影响",
+      "summary": "Understanding climate-driven shifts in runoff, evapotranspiration, and soil water."
+    },
+    {
+      "slug": "remote-sensing-modeling",
+      "title": "Remote Sensing & Modeling",
+      "titleZh": "遥感与模型",
+      "summary": "Integrating satellite observations, land surface models, and data assimilation."
+    }
+  ]
+}
