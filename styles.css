@@ -7,7 +7,7 @@
   --border-dark: #9fbab4;
   --bg: #f7faf8;
   --surface: #fbfdfc;
-  --masthead-bg: #102b2c;
+  --masthead-bg: #071112;
   --masthead-text: #f4faf7;
   --masthead-muted: #bfd0cb;
   --accent: #a9d3cc;
@@ -130,7 +130,7 @@ li {
   margin: 0;
   padding: 0 1.05em;
   background:
-    linear-gradient(90deg, rgba(7, 23, 24, 0.94), rgba(20, 55, 55, 0.94) 48%, rgba(13, 34, 36, 0.94)),
+    linear-gradient(90deg, rgba(3, 8, 9, 0.97), rgba(8, 18, 19, 0.96) 48%, rgba(5, 12, 13, 0.97)),
     var(--masthead-bg);
   border-bottom: 1px solid rgba(169, 211, 204, 0.24);
 }
