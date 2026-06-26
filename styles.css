@@ -121,7 +121,7 @@ img {
 
 .image-hero {
   position: relative;
-  min-height: clamp(500px, 64vh, 680px);
+  min-height: clamp(540px, 72vh, 760px);
   margin-top: 42px;
   overflow: hidden;
   border-radius: 2px;
@@ -131,7 +131,7 @@ img {
 
 .image-hero img {
   width: 100%;
-  height: clamp(500px, 64vh, 680px);
+  height: clamp(540px, 72vh, 760px);
   object-fit: cover;
 }
 
@@ -139,46 +139,56 @@ img {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(5, 16, 23, 0.86), rgba(5, 16, 23, 0.34) 48%, rgba(5, 16, 23, 0.16)),
-    linear-gradient(0deg, rgba(5, 16, 23, 0.34), transparent 45%);
+    linear-gradient(180deg, rgba(3, 11, 15, 0.28), rgba(3, 11, 15, 0.18) 38%, rgba(3, 11, 15, 0.52)),
+    linear-gradient(90deg, rgba(3, 11, 15, 0.34), rgba(3, 11, 15, 0.1) 52%, rgba(3, 11, 15, 0.12));
   content: "";
 }
 
 .image-hero-content {
   position: absolute;
   z-index: 2;
-  bottom: clamp(44px, 7vw, 88px);
+  top: 50%;
+  right: clamp(34px, 7vw, 92px);
   left: clamp(34px, 7vw, 92px);
-  max-width: 760px;
+  display: grid;
+  justify-items: center;
+  max-width: none;
   color: #fff;
+  text-align: center;
+  transform: translateY(-45%);
 }
 
 .image-hero-content p {
-  margin: 22px 0 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 14px;
-  font-weight: 760;
-  letter-spacing: 0.13em;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
   line-height: 1.6;
   text-transform: uppercase;
 }
 
 .image-hero-content h1 {
-  margin: 18px 0 0;
-  max-width: 760px;
-  font-size: clamp(48px, 7vw, 90px);
-  font-weight: 780;
-  line-height: 0.98;
+  margin: 0;
+  max-width: 1160px;
+  font-size: clamp(40px, 4.8vw, 66px);
+  font-weight: 650;
+  line-height: 1.04;
+  text-shadow: 0 8px 34px rgba(0, 0, 0, 0.34);
 }
 
 .image-hero-content strong {
   display: block;
   max-width: 640px;
-  margin-top: 22px;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(20px, 2.3vw, 30px);
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(18px, 1.75vw, 24px);
   font-weight: 500;
-  line-height: 1.36;
+  line-height: 1.45;
+}
+
+.home-landing {
+  margin-bottom: clamp(36px, 7vh, 82px);
 }
 
 .gch-mark {

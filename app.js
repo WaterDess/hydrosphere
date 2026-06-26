@@ -69,35 +69,11 @@
 
   function renderHome() {
     return `
-      <section class="image-hero">
+      <section class="image-hero home-landing">
         <img src="${esc(data.visuals.hero)}" alt="" />
         <div class="image-hero-content">
-          ${logoMark()}
-          <p>${esc(data.site.unit)}</p>
           <h1>${esc(data.site.name)}</h1>
           <strong>${esc(data.site.tagline)}</strong>
-        </div>
-      </section>
-
-      <section class="home-feature-grid" aria-label="Featured sections">
-        ${list(data.homeCards, renderFeatureCard)}
-      </section>
-
-      <section class="section home-about">
-        <div class="split-copy">
-          <span>About the group</span>
-          <h2>Understanding water systems in a changing world</h2>
-        </div>
-        <p>${esc(data.site.summary)}</p>
-      </section>
-
-      <section class="section home-news">
-        <div class="section-heading">
-          <span>Recent updates</span>
-          <h2>News</h2>
-        </div>
-        <div class="news-lines">
-          ${list(data.news.slice(0, 5), renderNewsLine)}
         </div>
       </section>
     `;
