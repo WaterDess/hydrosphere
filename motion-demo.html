@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Global Change Hydrology Group motion hero demo" />
+    <title>Motion Hero Demo | Global Change Hydrology Group</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Global Change Hydrology Group Home">
+        <span>Global Change Hydrology Group</span>
+        <small>Department of Earth System Science, Tsinghua University</small>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="people.html">People</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="news.html">News</a>
+        <a href="join.html">How to join?</a>
+      </nav>
+    </header>
+
+    <main id="app">
+      <section class="image-hero home-landing motion-demo-hero">
+        <canvas
+          class="motion-demo-canvas"
+          data-src="./public/assets/home-hydrosphere-motion-v1.png"
+          aria-hidden="true"
+        ></canvas>
+        <div class="image-hero-content">
+          <h1>Global Change Hydrology Group</h1>
+          <strong>Advancing water sciences for planetary health and sustainable development</strong>
+        </div>
+      </section>
+    </main>
+
+    <script src="./motion-demo.js?v=20260626"></script>
+  </body>
+</html>
