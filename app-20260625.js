@@ -35,102 +35,96 @@
     document.querySelector(".brand span").textContent = data.site.name;
     document.querySelector(".brand small").textContent = data.site.unit;
     document.querySelector(".brand").setAttribute("href", "index.html");
+
     const navEl = document.querySelector(".site-header nav");
     navEl.innerHTML = list(nav, ([key, label]) => `<a class="${key === page ? "active" : ""}" href="${href(key)}">${esc(label)}</a>`);
   }
 
-  function pageTitle(kicker, title, subtitle) {
+  function logoMark() {
     return `
-      <section class="page-title">
-        <div class="section-header">
+      <div class="gch-mark" aria-label="Global Change Hydrology Group">
+        <svg viewBox="0 0 92 92" role="presentation">
+          <path d="M10 57C29 33 47 64 65 40s22-15 27-6" />
+          <path d="M22 70c20-17 39 9 59-12" />
+          <circle cx="30" cy="35" r="5" />
+          <circle cx="65" cy="40" r="5" />
+        </svg>
+        <span>GCH</span>
+      </div>
+    `;
+  }
+
+  function pageHero(kicker, title, subtitle, image) {
+    return `
+      <section class="page-hero">
+        <div>
           <span>${esc(kicker)}</span>
           <h1>${esc(title)}</h1>
           ${subtitle ? `<p>${esc(subtitle)}</p>` : ""}
         </div>
+        ${image ? `<img src="${esc(image)}" alt="" />` : ""}
       </section>
-    `;
-  }
-
-  function renderHydroImage() {
-    return `
-      <div class="hydro-hero-image" aria-hidden="true">
-        <svg viewBox="0 0 920 520" role="presentation">
-          <defs>
-            <linearGradient id="waterGrad" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stop-color="#e9f6f3" />
-              <stop offset="1" stop-color="#f8fbfa" />
-            </linearGradient>
-          </defs>
-          <rect width="920" height="520" rx="18" fill="url(#waterGrad)" />
-          <path class="basin" d="M74 318 C185 240 280 266 386 188 C482 118 594 136 708 76 C790 34 846 60 890 42" />
-          <path d="M222 250 C260 286 286 327 310 402" />
-          <path d="M470 144 C512 198 550 236 614 270" />
-          <path d="M700 78 C734 130 776 168 850 196" />
-          <path class="contour" d="M92 392 C220 334 320 368 438 286 C546 210 666 232 848 160" />
-          <path class="contour" d="M64 224 C192 164 304 194 412 118 C520 42 628 74 792 20" />
-          <circle cx="386" cy="188" r="8" />
-          <circle cx="708" cy="76" r="8" />
-          <circle cx="614" cy="270" r="8" />
-        </svg>
-      </div>
-    `;
-  }
-
-  function renderLogoMark() {
-    return `
-      <div class="gch-logo" aria-label="Global Change Hydrology Group logo">
-        <svg viewBox="0 0 90 90" role="presentation">
-          <path d="M12 56 C30 34 47 64 64 41 S78 28 84 36" />
-          <path d="M22 68 C40 54 58 77 76 58" />
-          <circle cx="29" cy="36" r="5" />
-          <circle cx="63" cy="41" r="5" />
-        </svg>
-        <div>
-          <strong>GCH</strong>
-          <span>Global Change Hydrology</span>
-        </div>
-      </div>
     `;
   }
 
   function renderHome() {
     return `
-      <section class="hero hero-home">
-        <div class="hero-copy">
-          ${renderLogoMark()}
-          <p class="eyebrow">${esc(data.site.unit)}</p>
+      <section class="image-hero">
+        <img src="${esc(data.visuals.hero)}" alt="" />
+        <div class="image-hero-content">
+          ${logoMark()}
+          <p>${esc(data.site.unit)}</p>
           <h1>${esc(data.site.name)}</h1>
-          <p class="lead">${esc(data.site.tagline)}</p>
-          <p class="lead-en">${esc(data.site.summary)}</p>
+          <strong>${esc(data.site.tagline)}</strong>
         </div>
-        ${renderHydroImage()}
       </section>
-      <section class="home-strip">
-        <a class="home-link-card" href="about.html"><span>About</span><strong>Mission and priorities</strong></a>
-        <a class="home-link-card" href="people.html"><span>People</span><strong>Members and profiles</strong></a>
-        <a class="home-link-card" href="research.html"><span>Research</span><strong>Projects, code, and data</strong></a>
+
+      <section class="home-feature-grid" aria-label="Featured sections">
+        ${list(data.homeCards, renderFeatureCard)}
       </section>
-      <section class="section home-preview">
-        <div class="section-header">
-          <span>News</span>
-          <h1>Recent updates</h1>
+
+      <section class="section home-about">
+        <div class="split-copy">
+          <span>About the group</span>
+          <h2>Understanding water systems in a changing world</h2>
         </div>
-        <div class="news-list compact-news">
-          ${list(data.news.slice(0, 4), renderNewsItem)}
+        <p>${esc(data.site.summary)}</p>
+      </section>
+
+      <section class="section home-news">
+        <div class="section-heading">
+          <span>Recent updates</span>
+          <h2>News</h2>
+        </div>
+        <div class="news-lines">
+          ${list(data.news.slice(0, 5), renderNewsLine)}
         </div>
       </section>
     `;
   }
 
+  function renderFeatureCard(card) {
+    return `
+      <a class="feature-card" href="${esc(card.url)}">
+        <img src="${esc(card.image)}" alt="" />
+        <div>
+          <h2>${esc(card.title)}</h2>
+          <p>${esc(card.text)}</p>
+          <span>Learn more</span>
+        </div>
+      </a>
+    `;
+  }
+
   function renderAbout() {
     return `
-      ${pageTitle("About", "THU Global Change Hydrology Group", "A research group focused on water-cycle change and water security.")}
-      <section class="section no-top-border about-page">
-        <article class="intro-card">
+      ${pageHero("About", "THU Global Change Hydrology Group", "A research group focused on water-cycle change and water security.", data.visuals.research)}
+      <section class="section about-layout">
+        <article class="large-copy">
           <p>${esc(data.site.summary)}</p>
-          <p>Our mission is to advance water sciences for planetary health and sustainable development. To deliver on this mission and achieve our core objectives, we commit to the following priorities:</p>
+          <p>The group studies global change hydrology, water-cycle imbalance, water-risk monitoring and prediction, and transboundary water governance through modeling, remote sensing, data integration, and risk assessment.</p>
         </article>
-        <div class="mission-grid">
+        <div class="mission-list">
           ${list(data.mission, (item, index) => `
             <article>
               <span>${String(index + 1).padStart(2, "0")}</span>
@@ -144,11 +138,9 @@
 
   function renderPeople() {
     return `
-      ${pageTitle("People", "People", "Members of the Global Change Hydrology Group.")}
-      <section class="section no-top-border">
-        <div class="people-list">
-          ${list(data.people, renderPersonCard)}
-        </div>
+      ${pageHero("People", "People", "Members of the Global Change Hydrology Group.", data.visuals.pi)}
+      <section class="section people-grid">
+        ${list(data.people, renderPersonCard)}
       </section>
     `;
   }
@@ -169,8 +161,8 @@
   function renderPersonDetail() {
     const person = data.people.find((item) => item.slug === personSlug) || data.people[0];
     return `
-      ${pageTitle("People", person.name, person.position)}
-      <section class="section no-top-border person-detail">
+      ${pageHero("People", person.name, person.position, person.photo || data.visuals.research)}
+      <section class="section person-detail">
         <aside>
           ${person.photo ? `<img src="${esc(person.photo)}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder large">${esc(person.name.charAt(0))}</div>`}
           <p>${esc(person.address)}</p>
@@ -197,26 +189,29 @@
 
   function renderResearch() {
     return `
-      ${pageTitle("Research", "Research", "Research projects, code, and data will be updated as the group website develops.")}
-      <section class="section no-top-border">
-        <div class="research-hub">
-          ${list(data.research, (item, index) => `
-            <article>
-              <span>${String(index + 1).padStart(2, "0")}</span>
+      ${pageHero("Research", "Research", "Projects, code, and data for global change hydrology will be updated as the group website develops.", data.visuals.research)}
+      <section class="section research-grid">
+        ${list(data.research, (item, index) => `
+          <article class="visual-card">
+            <img src="${esc(item.image || data.visuals.research)}" alt="" />
+            <div>
+              <span>${String(index + 1).padStart(2, "0")} / ${esc(item.status)}</span>
               <h2>${esc(item.title)}</h2>
               <p>${esc(item.text)}</p>
-              <small>${esc(item.status)}</small>
-            </article>
-          `)}
-        </div>
+            </div>
+          </article>
+        `)}
       </section>
     `;
   }
 
   function renderPublications() {
     return `
-      ${pageTitle("Publications", "Publications", "Only papers affiliated with Department of Earth System Science, Tsinghua University will be listed here.")}
-      <section class="section no-top-border">
+      ${pageHero("Publications", "Publications", "Only papers affiliated with Department of Earth System Science, Tsinghua University will be listed here.", data.visuals.publications)}
+      <section class="section publication-layout">
+        <div class="publication-visual">
+          <img src="${esc(data.visuals.publications)}" alt="" />
+        </div>
         <div class="publication-list">
           ${list(data.publications, renderPublication)}
         </div>
@@ -227,7 +222,7 @@
   function renderPublication(paper) {
     return `
       <article class="publication">
-        <div class="pub-year">${esc(paper.year)}</div>
+        <time>${esc(paper.year)}</time>
         <div>
           <h2>${esc(paper.title)}</h2>
           <p>${esc(paper.authors)}</p>
@@ -242,24 +237,39 @@
   }
 
   function renderNews() {
+    const [first, ...rest] = data.news;
     return `
-      ${pageTitle("News", "News", "Seminars, announcements, and group updates.")}
-      <section class="section no-top-border">
-        <div class="news-list">
-          ${list(data.news, renderNewsItem)}
+      ${pageHero("News", "News", "Seminars, announcements, and group updates.", data.visuals.news)}
+      <section class="section news-layout">
+        ${first ? renderNewsFeature(first) : ""}
+        <div class="news-lines">
+          ${list(rest, renderNewsLine)}
         </div>
       </section>
     `;
   }
 
-  function renderNewsItem(item) {
+  function renderNewsFeature(item) {
     return `
-      <article class="news-row">
+      <article class="news-feature">
+        <img src="${esc(item.image || data.visuals.news)}" alt="" />
+        <div>
+          <span>${esc(item.type)} / ${esc(item.date)}</span>
+          <h2>${item.url ? `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.title)}</a>` : esc(item.title)}</h2>
+          <p>${esc(item.text)}</p>
+          ${item.url ? `<a class="text-link" href="${esc(item.url)}" target="_blank" rel="noopener">Open PDF</a>` : ""}
+        </div>
+      </article>
+    `;
+  }
+
+  function renderNewsLine(item) {
+    return `
+      <article class="news-line">
         <time>${esc(item.date)}</time>
         <div>
           <span>${esc(item.type)}</span>
-          <h2>${item.url ? `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.title)}</a>` : esc(item.title)}</h2>
-          <p>${esc(item.text)}</p>
+          <h3>${item.url ? `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.title)}</a>` : esc(item.title)}</h3>
         </div>
       </article>
     `;
@@ -267,8 +277,8 @@
 
   function renderJoin() {
     return `
-      ${pageTitle("How to join?", data.join.title, "Opportunities for students and visiting researchers.")}
-      <section class="section no-top-border join-page">
+      ${pageHero("How to join?", data.join.title, "Opportunities for students and visiting researchers.", data.visuals.join)}
+      <section class="section join-layout">
         <article>
           <h2>${esc(data.join.program)}</h2>
           <p>${esc(data.join.text)}</p>
@@ -276,7 +286,7 @@
         <article>
           <h2>PhD admission</h2>
           <p>${esc(data.join.phd)}</p>
-          <a href="mailto:${esc(data.site.email)}">${esc(data.site.email)}</a>
+          <a class="text-link" href="mailto:${esc(data.site.email)}">${esc(data.site.email)}</a>
         </article>
       </section>
     `;

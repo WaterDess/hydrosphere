@@ -14,7 +14,7 @@
 
 内容建议：
 
-- 课题组名称：汤秋鸿课题组 / Tang Research Group
+- 课题组名称：Global Change Hydrology Group
 - 单位：清华大学地球系统科学系
 - 一句话定位：全球变化背景下的水循环、水资源与极端水文过程研究
 - 3-4 个研究关键词：Hydrology, Water Resources, Climate Change, Earth System Science
@@ -175,7 +175,7 @@ Join Us
 左侧：
 
 - 汤秋鸿课题组
-- Tang Research Group
+- Global Change Hydrology Group
 - 一句话研究定位
 - 关键词
 
@@ -244,4 +244,3 @@ Group News：
 | 字号 | 很大 | 正常网页字号 |
 | 部署 | U 盘/本地文件 | GitHub Pages |
 | 更新方式 | 改本地数据文件 | 改仓库并发布 |
-

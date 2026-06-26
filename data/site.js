@@ -3,11 +3,39 @@ window.TANG_SITE = {
     name: "Global Change Hydrology Group",
     shortName: "GCH Group",
     unit: "Department of Earth System Science, Tsinghua University",
-    tagline: "Advancing water sciences for planetary health and sustainable development.",
+    tagline: "Advancing water sciences for planetary health and sustainable development",
     summary: "THU Global Change Hydrology (GCH) Group is an interdisciplinary research group at the Department of Earth System Science, Tsinghua University, dedicated to deepening understanding of the impacts of global change on water systems and solutions.",
     email: "tangqh@tsinghua.edu.cn",
     website: "https://faculty.dess.tsinghua.edu.cn/tangqiuhong/en/index.htm"
   },
+  visuals: {
+    hero: "./public/assets/hero-hydrosphere.svg",
+    research: "./public/assets/visual-research.svg",
+    publications: "./public/assets/visual-publications.svg",
+    news: "./public/assets/visual-news.svg",
+    join: "./public/assets/visual-join.svg",
+    pi: "./public/assets/tang-qiuhong-1.jpg"
+  },
+  homeCards: [
+    {
+      title: "Research",
+      text: "Water-cycle change, hydrological extremes, remote sensing, modeling, and risk prediction.",
+      url: "research.html",
+      image: "./public/assets/visual-research.svg"
+    },
+    {
+      title: "News",
+      text: "Seminars, calls for papers, group announcements, and academic updates.",
+      url: "news.html",
+      image: "./public/assets/visual-news.svg"
+    },
+    {
+      title: "Publications",
+      text: "Selected papers and outputs affiliated with the Department of Earth System Science.",
+      url: "publications.html",
+      image: "./public/assets/visual-publications.svg"
+    }
+  ],
   mission: [
     "Pursue rigorous, impactful water science research",
     "Develop innovative technologies and datasets for hydrosphere research",
@@ -71,18 +99,21 @@ window.TANG_SITE = {
   research: [
     {
       title: "Projects",
-      text: "Research projects will be listed here.",
-      status: "Content to be updated"
+      text: "Research projects on global change hydrology, hydrosphere prediction, and water security will be organized here.",
+      status: "Coming soon",
+      image: "./public/assets/visual-research.svg"
     },
     {
       title: "Code",
-      text: "Open-source code and model tools will be listed here.",
-      status: "Content to be updated"
+      text: "Open-source model tools, analysis workflows, and reproducible notebooks will be listed here.",
+      status: "Coming soon",
+      image: "./public/assets/hero-hydrosphere.svg"
     },
     {
       title: "Data",
-      text: "Datasets and data products will be listed here.",
-      status: "Content to be updated"
+      text: "Hydrological datasets, benchmark products, and curated data resources will be listed here.",
+      status: "Coming soon",
+      image: "./public/assets/visual-publications.svg"
     }
   ],
   publications: [
@@ -102,14 +133,16 @@ window.TANG_SITE = {
       type: "Call for Papers",
       title: "Advances in Observation, Modeling, and Prediction of the Hydrosphere",
       text: "npj Hydrosphere is calling for papers for a Collection on advances in observation, modeling, and prediction of the hydrosphere. Submission deadline: 31 March 2027.",
-      url: "./public/assets/npj-hydrosphere-aomph-flyer.pdf"
+      url: "./public/assets/npj-hydrosphere-aomph-flyer.pdf",
+      image: "./public/assets/visual-news.svg"
     },
     {
       date: "2026",
       type: "Congratulations",
       title: "Dr. Ruiyu Zhao selected as the Shuimu Tsinghua Scholar",
       text: "Congratulations to Dr. Ruiyu Zhao on being selected as a Shuimu Tsinghua Scholar.",
-      url: ""
+      url: "",
+      image: "./public/assets/visual-join.svg"
     },
     {
       date: "Forum 565",
