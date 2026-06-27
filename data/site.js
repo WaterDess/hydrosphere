@@ -116,7 +116,7 @@ window.TANG_SITE = {
       url: "https://www.nature.com/collections/aicidajahb",
       urlLabel: "Open collection",
       flyerUrl: "./public/assets/npj-hydrosphere-aomph-flyer.pdf",
-      image: "./public/assets/visual-news.svg"
+      image: "./public/assets/news-hydrosphere-satellite.png"
     },
     {
       date: "2026",

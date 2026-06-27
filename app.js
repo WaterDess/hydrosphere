@@ -200,7 +200,6 @@
   function renderNewsFeature(item) {
     return `
       <article class="news-feature">
-        <img src="${esc(item.image || data.visuals.news)}" alt="" />
         <div>
           <span>${esc(item.type)} / ${esc(item.date)}</span>
           <h2>${item.url ? `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.title)}</a>` : esc(item.title)}</h2>
@@ -210,6 +209,7 @@
             ${item.flyerUrl ? `<a class="text-link secondary" href="${esc(item.flyerUrl)}" target="_blank" rel="noopener">Open flyer PDF</a>` : ""}
           </div>
         </div>
+        <img src="${esc(item.image || data.visuals.news)}" alt="" />
       </article>
     `;
   }
