@@ -22,6 +22,7 @@ html {
   min-height: 100%;
   background: var(--bg);
   font-size: 16px;
+  scrollbar-gutter: stable both-edges;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -306,7 +307,7 @@ body[data-page="home"] .image-hero img {
 }
 
 #app {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - var(--masthead-height));
 }
 
 .page-hero,

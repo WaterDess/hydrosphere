@@ -272,6 +272,24 @@
     `;
   }
 
+  function renderContact() {
+    return `
+      ${pageHero("Contact", "Contact", data.site.unit, data.visuals.join)}
+      <section class="section join-layout">
+        <article>
+          <h2>Email</h2>
+          <p>For academic communication and admission inquiries, please contact the group through Prof. Qiuhong Tang.</p>
+          <a class="text-link" href="mailto:${esc(data.site.email)}">${esc(data.site.email)}</a>
+        </article>
+        <article>
+          <h2>Faculty profile</h2>
+          <p>Additional faculty information is available from the official Tsinghua University profile page.</p>
+          <a class="text-link" href="${esc(data.site.website)}" target="_blank" rel="noopener">Open faculty profile</a>
+        </article>
+      </section>
+    `;
+  }
+
   const renderers = {
     home: renderHome,
     about: renderAbout,
@@ -280,7 +298,8 @@
     research: renderResearch,
     publications: renderPublications,
     news: renderNews,
-    join: renderJoin
+    join: renderJoin,
+    contact: renderContact
   };
 
   if (!data) {
