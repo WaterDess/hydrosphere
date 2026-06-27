@@ -16,7 +16,7 @@
   --grid-rail: 980px;
   --content-rail: 820px;
   --detail-rail: 900px;
-  --toc-aside: 7.2em;
+  --toc-aside: 8.8em;
   --toc-gap: clamp(1.35em, 2.7vw, 2.25em);
   --toc-main: 760px;
   --toc-rail: calc(var(--toc-aside) + var(--toc-gap) + var(--toc-main));
@@ -400,9 +400,9 @@ body[data-page="home"] .image-hero img {
 .toc-sidebar a {
   display: block;
   width: fit-content;
-  padding: 0.12em 0;
+  padding: 0.14em 0;
   color: #73847f;
-  font-size: 0.62em;
+  font-size: 0.76em;
   line-height: 1.5;
 }
 

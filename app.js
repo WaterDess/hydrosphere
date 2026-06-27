@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "design-system-1";
+  const SITE_VERSION = "brand-toc-1";
 
   const nav = [
     ["news", "News"],
@@ -38,7 +38,7 @@
 
   function setupChrome() {
     document.documentElement.lang = "en";
-    document.querySelector(".brand span").textContent = data.site.name;
+    document.querySelector(".brand span").textContent = data.site.shortName || data.site.name;
     document.querySelector(".brand small").textContent = data.site.unit;
     document.querySelector(".brand").setAttribute("href", href("home"));
 
