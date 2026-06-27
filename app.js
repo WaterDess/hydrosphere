@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "compact-system-1";
+  const SITE_VERSION = "design-system-1";
 
   const nav = [
     ["news", "News"],
@@ -49,9 +49,11 @@
     });
   }
 
-  function pageHero(kicker, title, subtitle) {
+  function pageHero(kicker, title, subtitle, alignedWithToc = false) {
+    const className = alignedWithToc ? "page-hero page-hero-with-toc" : "page-hero";
+
     return `
-      <section class="page-hero">
+      <section class="${className}">
         <div>
           <span>${esc(kicker)}</span>
           <h1>${esc(title)}</h1>
@@ -130,7 +132,7 @@
     ].filter(Boolean);
 
     return `
-      ${pageHero("People", "People", "Members of the Global Change Hydrology Group.")}
+      ${pageHero("People", "People", "Members of the Global Change Hydrology Group.", true)}
       <section class="section people-layout">
         ${renderToc(tocItems)}
         <div class="people-content">
@@ -198,7 +200,7 @@
           <p>${esc(person.position)}</p>
         </div>
         <span>${hasEmail ? esc(person.email) : ""}</span>
-        <small>Profile</small>
+        <small>View profile</small>
       </a>
     `;
   }
@@ -239,7 +241,7 @@
     }));
 
     return `
-      ${pageHero("Research", "Research", "Projects, code, and data for global change hydrology will be updated as the group website develops.")}
+      ${pageHero("Research", "Research", "Projects, code, and data for global change hydrology will be updated as the group website develops.", true)}
       ${renderTocLayout(tocItems, list(data.research, (item) => `
         <section class="content-section research-section" id="${esc(sectionId("research", item.title))}">
           <div>
@@ -260,7 +262,7 @@
     const tocItems = years.map((year) => ({ id: `year-${year}`, label: String(year) }));
 
     return `
-      ${pageHero("Publications", "Publications", "Only papers affiliated with Department of Earth System Science, Tsinghua University will be listed here.")}
+      ${pageHero("Publications", "Publications", "Only papers affiliated with Department of Earth System Science, Tsinghua University will be listed here.", true)}
       ${renderTocLayout(tocItems, list(years, (year) => `
         <section class="content-section publication-year" id="year-${esc(year)}">
           <h2>${esc(year)}</h2>
@@ -338,7 +340,7 @@
     ];
 
     return `
-      ${pageHero("How to join?", data.join.title, "Opportunities for students and visiting researchers.")}
+      ${pageHero("How to join?", data.join.title, "Opportunities for students and visiting researchers.", true)}
       ${renderTocLayout(tocItems, `
         <article class="content-section join-section" id="global-research-program">
           <h2>${data.join.programUrl ? `<a href="${esc(data.join.programUrl)}" target="_blank" rel="noopener">${esc(data.join.program)}</a>` : esc(data.join.program)}</h2>

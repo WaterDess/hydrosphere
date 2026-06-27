@@ -16,6 +16,10 @@
   --grid-rail: 980px;
   --content-rail: 820px;
   --detail-rail: 900px;
+  --toc-aside: 7.2em;
+  --toc-gap: clamp(1.35em, 2.7vw, 2.25em);
+  --toc-main: 760px;
+  --toc-rail: calc(var(--toc-aside) + var(--toc-gap) + var(--toc-main));
 }
 
 * {
@@ -61,6 +65,10 @@ body[data-page="home"] {
   background: #102b2c;
   height: 100vh;
   overflow: hidden;
+}
+
+body[data-page="people"] {
+  --toc-main: 600px;
 }
 
 a {
@@ -321,9 +329,20 @@ body[data-page="home"] .image-hero img {
 
 .page-hero {
   display: block;
-  width: min(100% - 2em, 760px);
+  width: min(100% - 2em, var(--content-rail));
   padding: 1.8em 0 1.05em;
   border-bottom: 1px solid var(--border);
+}
+
+.page-hero-with-toc {
+  display: grid;
+  width: min(100% - 2em, var(--toc-rail));
+  grid-template-columns: var(--toc-aside) minmax(0, var(--toc-main));
+  gap: var(--toc-gap);
+}
+
+.page-hero-with-toc > div {
+  grid-column: 2;
 }
 
 .page-hero span {
@@ -334,6 +353,7 @@ body[data-page="home"] .image-hero img {
   margin: 0 0 0.32em;
   font-size: clamp(1.45rem, 2vw, 1.8rem);
   letter-spacing: -0.01em;
+  font-weight: 720;
 }
 
 .page-hero p {
@@ -350,9 +370,9 @@ body[data-page="home"] .image-hero img {
 
 .toc-layout {
   display: grid;
-  width: min(100% - 2em, var(--grid-rail));
-  grid-template-columns: 7.4em minmax(0, var(--content-rail));
-  gap: clamp(1.35em, 3vw, 2.35em);
+  width: min(100% - 2em, var(--toc-rail));
+  grid-template-columns: var(--toc-aside) minmax(0, var(--toc-main));
+  gap: var(--toc-gap);
   align-items: start;
 }
 
@@ -381,7 +401,7 @@ body[data-page="home"] .image-hero img {
   display: block;
   width: fit-content;
   padding: 0.12em 0;
-  color: var(--muted);
+  color: #73847f;
   font-size: 0.62em;
   line-height: 1.5;
 }
@@ -410,6 +430,7 @@ body[data-page="home"] .image-hero img {
   font-size: clamp(1.05rem, 1.35vw, 1.35rem);
   letter-spacing: -0.01em;
   line-height: 1.12;
+  font-weight: 720;
 }
 
 .about-layout,
@@ -520,9 +541,9 @@ body[data-page="home"] .image-hero img {
 
 .people-layout {
   display: grid;
-  width: min(100% - 2em, 760px);
-  grid-template-columns: 7.4em minmax(0, 520px);
-  gap: clamp(1.25em, 2.8vw, 2em);
+  width: min(100% - 2em, var(--toc-rail));
+  grid-template-columns: var(--toc-aside) minmax(0, var(--toc-main));
+  gap: var(--toc-gap);
   align-items: start;
 }
 
@@ -559,8 +580,8 @@ body[data-page="home"] .image-hero img {
 
 .people-block-heading h2 {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.66em;
+  color: #60736e;
+  font-size: 0.62em;
   font-weight: 800;
   line-height: 1.25;
   text-transform: uppercase;
@@ -582,7 +603,7 @@ body[data-page="home"] .image-hero img {
 .lead-person span {
   display: block;
   margin-bottom: 0.55em;
-  color: var(--muted);
+  color: #60736e;
   font-size: 0.56em;
   font-weight: 800;
   letter-spacing: 0;
@@ -621,11 +642,11 @@ body[data-page="home"] .image-hero img {
 
 .member-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.8em;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 0.18em;
+  align-items: start;
   color: inherit;
-  padding: 0.6em 0;
+  padding: 0.65em 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -639,10 +660,16 @@ body[data-page="home"] .image-hero img {
 }
 
 .member-row small {
-  color: var(--link);
-  font-size: 0.58em;
-  font-weight: 800;
-  text-transform: uppercase;
+  display: block;
+  margin-top: 0.08em;
+  color: #60736e;
+  font-size: 0.6em;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.member-row:hover small {
+  color: var(--link-hover);
 }
 
 .people-block-feature .lead-person {
@@ -671,6 +698,7 @@ body[data-page="home"] .image-hero img {
   font-size: clamp(1.08rem, 1.45vw, 1.42rem);
   letter-spacing: -0.01em;
   line-height: 1.1;
+  font-weight: 720;
 }
 
 .research-section p {
@@ -694,6 +722,7 @@ body[data-page="home"] .image-hero img {
 .publication-year > h2 {
   margin-bottom: 0.58em;
   font-size: clamp(1.22rem, 1.55vw, 1.55rem);
+  font-weight: 720;
 }
 
 .publication {
@@ -718,6 +747,7 @@ body[data-page="home"] .image-hero img {
   margin-bottom: 0.45em;
   font-size: clamp(1.02rem, 1.25vw, 1.28rem);
   letter-spacing: -0.01em;
+  font-weight: 720;
 }
 
 .join-section p {
@@ -882,11 +912,16 @@ body[data-page="home"] .image-hero img {
   .person-detail,
   .lead-person,
   .member-row,
+  .page-hero-with-toc,
   .toc-layout,
   .people-layout,
   .people-block,
   .research-section {
     grid-template-columns: 1fr;
+  }
+
+  .page-hero-with-toc > div {
+    grid-column: 1;
   }
 
   .toc-layout,
