@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "people-compact-1";
+  const SITE_VERSION = "compact-system-1";
 
   const nav = [
     ["news", "News"],
@@ -63,8 +63,7 @@
 
   function renderToc(items) {
     return `
-      <aside class="toc-sidebar" aria-label="On this page">
-        <h2>On this page</h2>
+      <aside class="toc-sidebar" aria-label="Section navigation">
         <nav>
           ${list(items, (item) => `<a href="#${esc(item.id)}">${esc(item.label)}</a>`)}
         </nav>
