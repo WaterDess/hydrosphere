@@ -5,11 +5,11 @@
   const personSlug = document.body.dataset.person || "";
 
   const nav = [
-    ["about", "About"],
-    ["people", "People"],
+    ["news", "News"],
     ["research", "Research"],
     ["publications", "Publications"],
-    ["news", "News"],
+    ["people", "People"],
+    ["about", "About"],
     ["join", "How to join?"]
   ];
 
