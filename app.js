@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "toc-nav-2";
+  const SITE_VERSION = "toc-nav-3";
 
   const nav = [
     ["news", "News"],
@@ -132,30 +132,42 @@
 
     return `
       ${pageHero("People", "People", "Members of the Global Change Hydrology Group.")}
-      ${renderTocLayout(tocItems, `
+      <section class="section people-layout">
+        ${renderToc(tocItems)}
+        <div class="people-content">
         ${lead ? `
-          <section class="content-section people-section" id="principal-investigator">
-            <h2>Principal Investigator</h2>
+          <section class="people-block people-block-feature" id="principal-investigator">
+            ${renderPeopleBlockHeading("01", "Principal Investigator")}
             ${renderLeadPerson(lead)}
           </section>
         ` : ""}
         ${scholars.length ? `
-          <section class="content-section people-section" id="scholars">
-            <h2>Scholars</h2>
+          <section class="people-block" id="scholars">
+            ${renderPeopleBlockHeading("02", "Scholars")}
             <div class="member-index" aria-label="Scholars">
               ${list(scholars, renderMemberRow)}
             </div>
           </section>
         ` : ""}
         ${generalMembers.length ? `
-          <section class="content-section people-section" id="members">
-            <h2>Members</h2>
+          <section class="people-block" id="members">
+            ${renderPeopleBlockHeading("03", "Members")}
             <div class="member-index" aria-label="Group members">
               ${list(generalMembers, renderMemberRow)}
             </div>
           </section>
         ` : ""}
-      `)}
+        </div>
+      </section>
+    `;
+  }
+
+  function renderPeopleBlockHeading(index, title) {
+    return `
+      <header class="people-block-heading">
+        <span>${esc(index)}</span>
+        <h2>${esc(title)}</h2>
+      </header>
     `;
   }
 
