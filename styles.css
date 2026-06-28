@@ -600,13 +600,20 @@ body[data-page="about"] .page-hero p {
     var(--surface);
   border: 1px solid var(--border);
   border-radius: 8px;
-  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .lead-person:hover {
   background: var(--surface);
-  border-color: var(--border-dark);
+  border-color: var(--link-hover);
+  box-shadow: 0 0 0.9em var(--link-glow);
   transform: translateY(-1px);
+}
+
+.lead-person:hover h2,
+.member-row:hover h2 {
+  color: var(--link-hover);
+  text-shadow: 0 0 0.75em var(--link-glow);
 }
 
 .people-layout {
@@ -715,7 +722,7 @@ body[data-page="about"] .page-hero p {
 
 .member-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75em;
   height: auto;
 }
@@ -731,12 +738,13 @@ body[data-page="about"] .page-hero p {
   background: rgba(251, 253, 252, 0.78);
   border: 1px solid var(--border);
   border-radius: 8px;
-  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 .member-row:hover {
   background: var(--surface);
-  border-color: var(--border-dark);
+  border-color: var(--link-hover);
+  box-shadow: 0 0 0.72em var(--link-glow);
   transform: translateY(-1px);
 }
 
@@ -1048,6 +1056,10 @@ body[data-page="about"] .page-hero p {
 
   .member-row {
     gap: 0.35rem;
+  }
+
+  .member-grid {
+    grid-template-columns: 1fr;
   }
 
   .member-row span,
