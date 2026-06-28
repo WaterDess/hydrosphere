@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "layout-logo-refine-1";
+  const SITE_VERSION = "logo-h-wave-3";
 
   const nav = [
     ["news", "News"],
