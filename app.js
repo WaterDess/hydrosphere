@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "join-toc-1";
+  const SITE_VERSION = "people-cards-1";
 
   const nav = [
     ["news", "News"],
@@ -133,7 +133,6 @@
     ].filter(Boolean);
 
     return `
-      ${pageHero("People", "People", "Members of the Global Change Hydrology Group.", true)}
       <section class="section people-layout">
         ${renderToc(tocItems)}
         <div class="people-content">
@@ -143,10 +142,11 @@
             ${renderLeadPerson(lead)}
           </section>
         ` : ""}
+        <div class="people-secondary-grid">
         ${scholars.length ? `
           <section class="people-block" id="scholars">
             ${renderPeopleBlockHeading("02", "Scholars")}
-            <div class="member-index" aria-label="Scholars">
+            <div class="member-grid" aria-label="Scholars">
               ${list(scholars, renderMemberRow)}
             </div>
           </section>
@@ -154,11 +154,12 @@
         ${generalMembers.length ? `
           <section class="people-block" id="members">
             ${renderPeopleBlockHeading("03", "Members")}
-            <div class="member-index" aria-label="Group members">
+            <div class="member-grid" aria-label="Group members">
               ${list(generalMembers, renderMemberRow)}
             </div>
           </section>
         ` : ""}
+        </div>
         </div>
       </section>
     `;
@@ -181,7 +182,6 @@
     return `
       <article class="lead-person">
         <div>
-          <span>Principal Investigator</span>
           <h2><a href="${esc(versioned(`person-${person.slug}.html`))}">${esc(person.name)}</a></h2>
           <p>${esc(person.position)}</p>
           <small><a href="${person.email.includes("@") ? `mailto:${esc(person.email)}` : "#"}">${esc(person.email)}</a></small>
@@ -238,7 +238,6 @@
     }));
 
     return `
-      ${pageHero("Research", "Research", "Projects, code, and data for global change hydrology will be updated as the group website develops.", true)}
       ${renderTocLayout(tocItems, list(data.research, (item) => `
         <section class="content-section research-section" id="${esc(sectionId("research", item.title))}">
           <div>
@@ -259,7 +258,6 @@
     const tocItems = years.map((year) => ({ id: `year-${year}`, label: String(year) }));
 
     return `
-      ${pageHero("Publications", "Publications", "Only papers affiliated with Department of Earth System Science, Tsinghua University will be listed here.", true)}
       ${renderTocLayout(tocItems, list(years, (year) => `
         <section class="content-section publication-year" id="year-${esc(year)}">
           <h2>${esc(year)}</h2>
@@ -291,7 +289,6 @@
   function renderNews() {
     const [first, ...rest] = data.news;
     return `
-      ${pageHero("News", "News", "Seminars, announcements, and group updates.")}
       <section class="section news-layout">
         ${first ? renderNewsFeature(first) : ""}
         <div class="news-lines">
@@ -337,7 +334,6 @@
     ];
 
     return `
-      ${pageHero("How to join?", data.join.title, "Opportunities for students and visiting researchers.", true)}
       ${renderTocLayout(tocItems, `
         <article class="content-section join-section" id="global-research-program">
           <h2>${data.join.programUrl ? `<a href="${esc(data.join.programUrl)}" target="_blank" rel="noopener">${esc(data.join.program)}</a>` : esc(data.join.program)}</h2>
@@ -354,7 +350,6 @@
 
   function renderContact() {
     return `
-      ${pageHero("Contact", "Contact", data.site.unit)}
       <section class="section join-layout">
         <article>
           <h2>Email</h2>

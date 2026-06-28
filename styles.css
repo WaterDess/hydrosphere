@@ -68,7 +68,7 @@ body[data-page="home"] {
 }
 
 body[data-page="people"] {
-  --toc-main: 680px;
+  --toc-main: 860px;
 }
 
 a {
@@ -399,9 +399,9 @@ body[data-page="home"] .image-hero img {
 .toc-sidebar a {
   display: block;
   width: fit-content;
-  padding: 0.14em 0;
+  padding: 0.16em 0;
   color: #73847f;
-  font-size: 0.76em;
+  font-size: 0.82em;
   line-height: 1.5;
   text-decoration: none;
 }
@@ -532,12 +532,17 @@ body[data-page="home"] .image-hero img {
 
 .lead-person {
   display: grid;
-  grid-template-columns: minmax(0, 19em) 7.2em;
-  gap: 1.35em;
+  grid-template-columns: minmax(0, 1fr) 9.4em;
+  gap: clamp(1.3em, 3vw, 2.2em);
   align-items: center;
+  min-height: 12em;
   color: inherit;
-  padding-bottom: 1.15em;
-  border-bottom: 1px solid var(--border);
+  padding: clamp(1.1em, 2.4vw, 1.65em);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(240, 247, 245, 0.68)),
+    var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
 .people-layout {
@@ -546,17 +551,24 @@ body[data-page="home"] .image-hero img {
   grid-template-columns: var(--toc-aside) minmax(0, var(--toc-main));
   gap: var(--toc-gap);
   align-items: start;
-  padding-top: 1.25em;
+  padding-top: clamp(2em, 4vw, 3.2em);
 }
 
 .people-content {
   min-width: 0;
 }
 
+.people-secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9em;
+  align-items: stretch;
+}
+
 .people-block {
   display: block;
-  padding: 0.95em 0 1.05em;
-  border-bottom: 1px solid var(--border);
+  padding: 1.25em 0 0;
+  border-bottom: 0;
   scroll-margin-top: calc(var(--masthead-height) + 1em);
 }
 
@@ -564,11 +576,15 @@ body[data-page="home"] .image-hero img {
   padding-top: 0;
 }
 
+.people-secondary-grid .people-block {
+  min-width: 0;
+}
+
 .people-block-heading {
   display: flex;
-  gap: 0.7em;
+  gap: 0.75em;
   align-items: baseline;
-  margin-bottom: 0.88em;
+  margin-bottom: 0.8em;
   padding-top: 0;
 }
 
@@ -583,7 +599,7 @@ body[data-page="home"] .image-hero img {
 .people-block-heading h2 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(0.94rem, 1.04vw, 1.08rem);
+  font-size: clamp(1.05rem, 1.32vw, 1.35rem);
   font-weight: 780;
   line-height: 1.15;
   text-transform: uppercase;
@@ -591,25 +607,15 @@ body[data-page="home"] .image-hero img {
 
 .lead-person img,
 .lead-person .avatar-placeholder {
-  width: 7.2em;
-  height: 7.2em;
+  width: 9.4em;
+  height: 9.4em;
   object-fit: cover;
-  border-radius: 4px;
-}
-
-.lead-person span {
-  display: block;
-  margin-bottom: 0.55em;
-  color: #60736e;
-  font-size: 0.56em;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
+  border-radius: 6px;
 }
 
 .lead-person h2 {
   margin: 0 0 0.2em;
-  font-size: clamp(1rem, 1.18vw, 1.18rem);
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
   letter-spacing: -0.01em;
   line-height: 1.12;
 }
@@ -639,8 +645,8 @@ body[data-page="home"] .image-hero img {
 }
 
 .member-row h2 {
-  margin: 0 0 0.14em;
-  font-size: 0.8em;
+  margin: 0 0 0.22em;
+  font-size: clamp(1rem, 1.16vw, 1.12rem);
   line-height: 1.2;
 }
 
@@ -649,7 +655,7 @@ body[data-page="home"] .image-hero img {
 .member-row p,
 .member-row span {
   color: var(--muted);
-  font-size: 0.68em;
+  font-size: 0.74em;
   line-height: 1.45;
 }
 
@@ -657,18 +663,28 @@ body[data-page="home"] .image-hero img {
   margin-bottom: 0.75em;
 }
 
-.member-index {
-  border-top: 0;
+.member-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75em;
 }
 
 .member-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.18em;
-  align-items: start;
+  display: flex;
+  min-height: 5.8em;
+  align-items: flex-end;
   color: inherit;
-  padding: 0.58em 0;
-  border-bottom: 1px solid var(--border);
+  padding: 0.95em;
+  background: rgba(251, 253, 252, 0.78);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.member-row:hover {
+  background: var(--surface);
+  border-color: var(--border-dark);
+  transform: translateY(-1px);
 }
 
 .member-row p {
@@ -681,8 +697,7 @@ body[data-page="home"] .image-hero img {
 }
 
 .people-block-feature .lead-person {
-  padding-bottom: 0;
-  border-bottom: 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .research-section {
@@ -916,6 +931,7 @@ body[data-page="home"] .image-hero img {
   .person-detail,
   .lead-person,
   .member-row,
+  .people-secondary-grid,
   .page-hero-with-toc,
   .toc-layout,
   .people-layout,
