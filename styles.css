@@ -219,7 +219,6 @@ li {
 .site-header nav a.active {
   color: var(--masthead-text);
   text-decoration: none;
-  text-shadow: 0 0 0.7em rgba(169, 211, 204, 0.36);
 }
 
 .site-header nav a::after {

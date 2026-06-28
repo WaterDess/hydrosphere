@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "people-scholar-glow-1";
+  const SITE_VERSION = "nav-no-glow-1";
 
   const nav = [
     ["news", "News"],
