@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "hover-links-1";
+  const SITE_VERSION = "news-links-1";
 
   const nav = [
     ["news", "News"],
@@ -307,7 +307,7 @@
           <p>${esc(item.text)}</p>
           <div class="link-row">
             ${item.url ? `<a class="text-link" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.urlLabel || "Learn more")}</a>` : ""}
-            ${item.flyerUrl ? `<a class="text-link secondary" href="${esc(item.flyerUrl)}" target="_blank" rel="noopener">Open flyer PDF</a>` : ""}
+            ${item.flyerUrl ? `<a class="text-link secondary" href="${esc(item.flyerUrl)}" target="_blank" rel="noopener">PDF</a>` : ""}
           </div>
         </div>
         <img src="${esc(item.image || data.visuals.news)}" alt="" />

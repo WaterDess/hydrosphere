@@ -857,13 +857,13 @@ body[data-page="home"] .image-hero img {
 }
 
 .text-link {
-  color: var(--link);
+  color: #637671;
   font-size: 0.75em;
   font-weight: 700;
 }
 
 .text-link.secondary {
-  color: var(--muted);
+  color: #637671;
 }
 
 .join-layout {

@@ -115,7 +115,7 @@ window.TANG_SITE = {
       title: "Advances in Observation, Modeling, and Prediction of the Hydrosphere",
       text: "npj Hydrosphere is calling for papers for a Collection on advances in observation, modeling, and prediction of the hydrosphere. Submission deadline: 31 March 2027.",
       url: "https://www.nature.com/collections/aicidajahb",
-      urlLabel: "Open collection",
+      urlLabel: "URL",
       flyerUrl: "./public/assets/npj-hydrosphere-aomph-flyer.pdf",
       image: "./public/assets/news-hydrosphere-satellite.png"
     },
