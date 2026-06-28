@@ -375,6 +375,21 @@ body[data-page="home"] .image-hero img {
   line-height: 1.55;
 }
 
+body[data-page="about"] .page-hero > div {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+body[data-page="about"] .page-hero h1 {
+  text-align: center;
+}
+
+body[data-page="about"] .page-hero p {
+  max-width: none;
+}
+
 .section {
   padding: 1.55em 0 2.4em;
 }
