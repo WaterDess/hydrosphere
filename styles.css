@@ -453,34 +453,29 @@ body[data-page="home"] .image-hero img {
 }
 
 .about-layout {
-  display: grid;
-  width: min(100% - 2em, var(--content-rail));
-  gap: 1.15em;
+  display: block;
+  width: min(100% - 2em, 880px);
 }
 
 .large-copy {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1em;
+  display: block;
 }
 
 .large-copy p {
-  min-height: 10.2em;
-  margin: 0;
-  padding: 1.05em 1.1em;
+  min-height: 0;
+  margin: 0 0 1.35em;
+  padding: 0;
   color: var(--text);
-  background: rgba(251, 253, 252, 0.72);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   font-size: 0.86em;
   line-height: 1.62;
 }
 
 .about-layout .mission-list {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.75em;
-  border-top: 0;
+  display: block;
+  border-top: 1px solid var(--border);
 }
 
 .mission-list,
@@ -521,16 +516,17 @@ body[data-page="home"] .image-hero img {
 }
 
 .about-layout .mission-list article {
-  min-height: 8.5em;
-  padding: 0.95em;
-  background: rgba(251, 253, 252, 0.72);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  min-height: 0;
+  padding: 0.85em 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
 }
 
 .about-layout .mission-list strong {
-  font-size: 0.76em;
-  line-height: 1.42;
+  font-size: 0.9em;
+  line-height: 1.35;
 }
 
 .avatar-placeholder,
@@ -611,14 +607,6 @@ body[data-page="home"] .image-hero img {
   min-width: 0;
 }
 
-.people-secondary-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9em;
-  align-items: stretch;
-  margin-top: 0.15em;
-}
-
 .people-block {
   display: block;
   padding: 1.25em 0 0;
@@ -628,14 +616,6 @@ body[data-page="home"] .image-hero img {
 
 .people-block:first-child {
   padding-top: 0;
-}
-
-.people-secondary-grid .people-block {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  height: 100%;
-  padding-top: 1.25em;
 }
 
 .people-block-heading {
@@ -720,18 +700,16 @@ body[data-page="home"] .image-hero img {
 
 .member-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
   gap: 0.75em;
-  flex: 1;
-  height: 100%;
+  height: auto;
 }
 
 .member-row {
   position: relative;
   cursor: pointer;
   display: flex;
-  height: 100%;
-  min-height: 4.75em;
+  min-height: 4.15em;
   align-items: center;
   color: inherit;
   padding: 0.72em 0.82em;
@@ -1020,7 +998,6 @@ body[data-page="home"] .image-hero img {
   .person-detail,
   .lead-person,
   .member-row,
-  .people-secondary-grid,
   .page-hero-with-toc,
   .toc-layout,
   .people-layout,
@@ -1052,11 +1029,6 @@ body[data-page="home"] .image-hero img {
 
   .lead-person {
     align-items: start;
-  }
-
-  .large-copy,
-  .about-layout .mission-list {
-    grid-template-columns: 1fr;
   }
 
   .member-row {

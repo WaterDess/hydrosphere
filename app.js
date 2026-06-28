@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "ui-refine-1";
+  const SITE_VERSION = "layout-logo-refine-1";
 
   const nav = [
     ["news", "News"],
@@ -142,7 +142,6 @@
             ${renderLeadPerson(lead)}
           </section>
         ` : ""}
-        <div class="people-secondary-grid">
         ${scholars.length ? `
           <section class="people-block" id="scholars">
             ${renderPeopleBlockHeading("02", "Scholars")}
@@ -159,7 +158,6 @@
             </div>
           </section>
         ` : ""}
-        </div>
         </div>
       </section>
     `;
