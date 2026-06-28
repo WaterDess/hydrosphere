@@ -220,11 +220,12 @@
   function renderPersonDetail() {
     const person = data.people.find((item) => item.slug === personSlug) || data.people[0];
     return `
-      ${pageHero("People", person.name, person.position)}
+      ${pageHero("People", person.name, "")}
       <section class="section person-detail">
-        <aside>
+        <aside class="profile-summary">
           ${person.photo ? `<img src="${esc(assetUrl(person.photo))}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder large">${esc(person.name.charAt(0))}</div>`}
-          <p>${esc(person.address)}</p>
+          <p class="profile-department">${esc(person.address)}</p>
+          ${renderProfileTitles(person.position)}
           <a href="${person.email.includes("@") ? `mailto:${esc(person.email)}` : "#"}">${esc(person.email)}</a>
         </aside>
         <div class="detail-sections">
@@ -235,6 +236,16 @@
         </div>
       </section>
     `;
+  }
+
+  function renderProfileTitles(position) {
+    const titles = String(position || "")
+      .split(/[;；]/)
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    if (!titles.length) return "";
+    return `<ul class="profile-titles">${list(titles, (title) => `<li>${esc(title)}</li>`)}</ul>`;
   }
 
   function renderDetailBlock(title, items) {

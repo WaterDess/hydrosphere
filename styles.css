@@ -81,6 +81,10 @@ body[data-page="person"] {
   --content-rail: var(--detail-rail);
 }
 
+body[data-page="person"] .page-hero {
+  text-align: center;
+}
+
 a {
   color: var(--link);
   text-decoration: none;
@@ -900,6 +904,32 @@ body[data-page="about"] .page-hero p {
 
 .avatar-placeholder.large {
   font-size: 2.5em;
+}
+
+.profile-summary img,
+.profile-summary .avatar-placeholder.large {
+  display: block;
+  margin-bottom: 0.85em;
+}
+
+.profile-summary .profile-department {
+  margin: 0 0 0.7em;
+}
+
+.profile-titles {
+  margin: 0 0 0.75em;
+  padding-left: 1.05em;
+  color: var(--muted);
+  font-size: 0.75em;
+  line-height: 1.55;
+}
+
+.profile-titles li {
+  margin-bottom: 0.15em;
+}
+
+.profile-summary a {
+  display: inline-block;
 }
 
 .detail-sections ul {
