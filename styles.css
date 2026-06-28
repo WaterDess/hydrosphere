@@ -68,7 +68,7 @@ body[data-page="home"] {
 }
 
 body[data-page="people"] {
-  --toc-main: 600px;
+  --toc-main: 680px;
 }
 
 a {
@@ -78,11 +78,14 @@ a {
 
 main a {
   color: var(--link);
-  text-decoration-line: underline;
-  text-decoration-color: rgba(46, 111, 115, 0.34);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+  text-decoration: none;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+main a:hover {
+  background: rgba(46, 111, 115, 0.1);
+  color: var(--link-hover);
+  text-decoration: none;
 }
 
 a:visited {
@@ -91,7 +94,7 @@ a:visited {
 
 a:hover {
   color: var(--link-hover);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 img {
@@ -176,7 +179,7 @@ li {
 
 .brand-logo {
   display: block;
-  width: 7.7em;
+  width: 6.25em;
   height: auto;
 }
 
@@ -404,6 +407,7 @@ body[data-page="home"] .image-hero img {
 }
 
 .toc-sidebar a:hover {
+  background: transparent;
   color: var(--link-hover);
   text-decoration: none;
 }
@@ -528,7 +532,7 @@ body[data-page="home"] .image-hero img {
 
 .lead-person {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 7.4em;
+  grid-template-columns: minmax(0, 19em) 7.2em;
   gap: 1.35em;
   align-items: center;
   color: inherit;
@@ -542,6 +546,7 @@ body[data-page="home"] .image-hero img {
   grid-template-columns: var(--toc-aside) minmax(0, var(--toc-main));
   gap: var(--toc-gap);
   align-items: start;
+  padding-top: 1.25em;
 }
 
 .people-content {
@@ -550,7 +555,7 @@ body[data-page="home"] .image-hero img {
 
 .people-block {
   display: block;
-  padding: 1.05em 0;
+  padding: 0.95em 0 1.05em;
   border-bottom: 1px solid var(--border);
   scroll-margin-top: calc(var(--masthead-height) + 1em);
 }
@@ -561,16 +566,16 @@ body[data-page="home"] .image-hero img {
 
 .people-block-heading {
   display: flex;
-  gap: 0.82em;
+  gap: 0.7em;
   align-items: baseline;
-  margin-bottom: 0.95em;
+  margin-bottom: 0.88em;
   padding-top: 0;
 }
 
 .people-block-heading span {
   display: block;
   color: var(--border-dark);
-  font-size: 0.68em;
+  font-size: 0.62em;
   font-weight: 800;
   line-height: 1;
 }
@@ -578,16 +583,16 @@ body[data-page="home"] .image-hero img {
 .people-block-heading h2 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(1.02rem, 1.18vw, 1.18rem);
-  font-weight: 800;
-  line-height: 1.12;
+  font-size: clamp(0.94rem, 1.04vw, 1.08rem);
+  font-weight: 780;
+  line-height: 1.15;
   text-transform: uppercase;
 }
 
 .lead-person img,
 .lead-person .avatar-placeholder {
-  width: 7.4em;
-  height: 7.4em;
+  width: 7.2em;
+  height: 7.2em;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -604,7 +609,7 @@ body[data-page="home"] .image-hero img {
 
 .lead-person h2 {
   margin: 0 0 0.2em;
-  font-size: clamp(1.05rem, 1.35vw, 1.3rem);
+  font-size: clamp(1rem, 1.18vw, 1.18rem);
   letter-spacing: -0.01em;
   line-height: 1.12;
 }
@@ -622,19 +627,32 @@ body[data-page="home"] .image-hero img {
   color: var(--link);
 }
 
+.lead-person h2 a,
+.member-row h2 a,
+.news-feature h2 a,
+.news-line h3 a,
+.join-section h2 a,
+.lead-person small a,
+.person-detail aside a,
+.text-link {
+  border-radius: 2px;
+}
+
 .lead-person h2 a:hover,
 .member-row h2 a:hover,
 .news-feature h2 a:hover,
 .news-line h3 a:hover,
 .join-section h2 a:hover,
 .lead-person small a:hover,
-.person-detail aside a:hover {
+.person-detail aside a:hover,
+.text-link:hover {
+  background: rgba(46, 111, 115, 0.08);
   color: var(--link-hover);
 }
 
 .member-row h2 {
   margin: 0 0 0.14em;
-  font-size: 0.88em;
+  font-size: 0.8em;
   line-height: 1.2;
 }
 
@@ -661,7 +679,7 @@ body[data-page="home"] .image-hero img {
   gap: 0.18em;
   align-items: start;
   color: inherit;
-  padding: 0.65em 0;
+  padding: 0.58em 0;
   border-bottom: 1px solid var(--border);
 }
 

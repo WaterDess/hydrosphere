@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "people-logo-1";
+  const SITE_VERSION = "people-redesign-1";
 
   const nav = [
     ["news", "News"],
@@ -166,7 +166,7 @@
 
   function renderPeopleBlockHeading(index, title) {
     return `
-      <header class="people-block-heading">
+      <header class="people-block-heading" aria-label="${esc(title)}">
         <span>${esc(index)}</span>
         <h2>${esc(title)}</h2>
       </header>
