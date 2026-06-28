@@ -76,6 +76,15 @@ a {
   text-decoration: none;
 }
 
+main a {
+  color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-color: rgba(46, 111, 115, 0.34);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
 a:visited {
   color: #4e8486;
 }
@@ -165,25 +174,10 @@ li {
   text-decoration: none;
 }
 
-.brand span {
-  display: inline-flex;
-  align-items: center;
-  color: var(--masthead-text);
-  font-size: 0.92em;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.brand span::after {
+.brand-logo {
   display: block;
-  width: 2.2em;
-  height: 1px;
-  margin-left: 0.52em;
-  background: linear-gradient(90deg, rgba(169, 211, 204, 0.9), rgba(169, 211, 204, 0.08));
-  content: "";
+  width: 7.7em;
+  height: auto;
 }
 
 .site-header nav {
@@ -406,6 +400,7 @@ body[data-page="home"] .image-hero img {
   color: #73847f;
   font-size: 0.76em;
   line-height: 1.5;
+  text-decoration: none;
 }
 
 .toc-sidebar a:hover {
@@ -533,8 +528,8 @@ body[data-page="home"] .image-hero img {
 
 .lead-person {
   display: grid;
-  grid-template-columns: 6.4em minmax(0, 1fr);
-  gap: 1.1em;
+  grid-template-columns: minmax(0, 1fr) 7.4em;
+  gap: 1.35em;
   align-items: center;
   color: inherit;
   padding-bottom: 1.15em;
@@ -566,38 +561,33 @@ body[data-page="home"] .image-hero img {
 
 .people-block-heading {
   display: flex;
-  gap: 0.75em;
+  gap: 0.82em;
   align-items: baseline;
-  margin-bottom: 0.7em;
+  margin-bottom: 0.95em;
   padding-top: 0;
 }
 
 .people-block-heading span {
   display: block;
   color: var(--border-dark);
-  font-size: 0.56em;
+  font-size: 0.68em;
   font-weight: 800;
   line-height: 1;
 }
 
 .people-block-heading h2 {
   margin: 0;
-  color: #60736e;
-  font-size: 0.62em;
+  color: var(--text);
+  font-size: clamp(1.02rem, 1.18vw, 1.18rem);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.12;
   text-transform: uppercase;
-}
-
-.lead-person:hover,
-.member-row:hover {
-  text-decoration: none;
 }
 
 .lead-person img,
 .lead-person .avatar-placeholder {
-  width: 6.2em;
-  height: 6.2em;
+  width: 7.4em;
+  height: 7.4em;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -619,9 +609,32 @@ body[data-page="home"] .image-hero img {
   line-height: 1.12;
 }
 
+.lead-person h2 a,
+.member-row h2 a,
+.news-feature h2 a,
+.news-line h3 a,
+.join-section h2 a {
+  color: var(--text);
+}
+
+.lead-person small a,
+.person-detail aside a {
+  color: var(--link);
+}
+
+.lead-person h2 a:hover,
+.member-row h2 a:hover,
+.news-feature h2 a:hover,
+.news-line h3 a:hover,
+.join-section h2 a:hover,
+.lead-person small a:hover,
+.person-detail aside a:hover {
+  color: var(--link-hover);
+}
+
 .member-row h2 {
   margin: 0 0 0.14em;
-  font-size: 0.9em;
+  font-size: 0.88em;
   line-height: 1.2;
 }
 
@@ -659,19 +672,6 @@ body[data-page="home"] .image-hero img {
 .member-row span {
   display: none;
   justify-self: start;
-}
-
-.member-row small {
-  display: block;
-  margin-top: 0.08em;
-  color: #60736e;
-  font-size: 0.6em;
-  font-weight: 700;
-  text-transform: none;
-}
-
-.member-row:hover small {
-  color: var(--link-hover);
 }
 
 .people-block-feature .lead-person {
@@ -886,8 +886,8 @@ body[data-page="home"] .image-hero img {
     transform: none;
   }
 
-  .brand span {
-    font-size: 0.86rem;
+  .brand-logo {
+    width: 6.6rem;
   }
 
   .site-header nav {

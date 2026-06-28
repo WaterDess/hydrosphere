@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "gchg-logo-2";
+  const SITE_VERSION = "people-logo-1";
 
   const nav = [
     ["news", "News"],
@@ -38,7 +38,9 @@
 
   function setupChrome() {
     document.documentElement.lang = "en";
-    document.querySelector(".brand span").textContent = data.site.shortName || data.site.name;
+    const brandLogo = document.querySelector(".brand-logo");
+    brandLogo.src = data.visuals.logo;
+    brandLogo.alt = data.site.shortName || data.site.name;
     document.querySelector(".brand").setAttribute("href", href("home"));
 
     const navEl = document.querySelector(".site-header nav");
@@ -177,30 +179,26 @@
 
   function renderLeadPerson(person) {
     return `
-      <a class="lead-person" href="${esc(versioned(`person-${person.slug}.html`))}">
-        ${person.photo ? `<img src="${esc(person.photo)}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder">${esc(person.name.charAt(0))}</div>`}
+      <article class="lead-person">
         <div>
           <span>Principal Investigator</span>
-          <h2>${esc(person.name)}</h2>
+          <h2><a href="${esc(versioned(`person-${person.slug}.html`))}">${esc(person.name)}</a></h2>
           <p>${esc(person.position)}</p>
-          <small>${esc(person.email)}</small>
+          <small><a href="${person.email.includes("@") ? `mailto:${esc(person.email)}` : "#"}">${esc(person.email)}</a></small>
         </div>
-      </a>
+        ${person.photo ? `<img src="${esc(person.photo)}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder">${esc(person.name.charAt(0))}</div>`}
+      </article>
     `;
   }
 
   function renderMemberRow(person) {
-    const hasEmail = person.email.includes("@");
-
     return `
-      <a class="member-row" href="${esc(versioned(`person-${person.slug}.html`))}">
+      <article class="member-row">
         <div>
-          <h2>${esc(person.name)}</h2>
+          <h2><a href="${esc(versioned(`person-${person.slug}.html`))}">${esc(person.name)}</a></h2>
           <p>${esc(person.position)}</p>
         </div>
-        <span>${hasEmail ? esc(person.email) : ""}</span>
-        <small>View profile</small>
-      </a>
+      </article>
     `;
   }
 
