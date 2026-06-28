@@ -3,7 +3,14 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "nav-no-glow-1";
+  const IS_FILE_PREVIEW = window.location.protocol === "file:";
+  const PUBLIC_BASE = (() => {
+    if (IS_FILE_PREVIEW) return "";
+    const marker = "/hydrosphere/";
+    const path = window.location.pathname;
+    const index = path.indexOf(marker);
+    return index >= 0 ? path.slice(0, index + marker.length) : "/";
+  })();
 
   const nav = [
     ["news", "News"],
@@ -28,18 +35,26 @@
   }
 
   function href(pageName) {
-    const fileName = pageName === "home" ? "index.html" : `${pageName}.html`;
-    return versioned(fileName);
+    if (IS_FILE_PREVIEW) {
+      return pageName === "home" ? "index.html" : `${pageName}.html`;
+    }
+
+    return `${PUBLIC_BASE}${pageName === "home" ? "" : `${pageName}/`}`;
   }
 
-  function versioned(url) {
-    return `${url}${url.includes("?") ? "&" : "?"}v=${SITE_VERSION}`;
+  function personHref(slug) {
+    return IS_FILE_PREVIEW ? `person-${slug}.html` : `${PUBLIC_BASE}person-${slug}/`;
+  }
+
+  function assetUrl(url) {
+    if (!url || IS_FILE_PREVIEW || /^(https?:|mailto:|#)/.test(url)) return url;
+    return url.startsWith("./") ? `${PUBLIC_BASE}${url.slice(2)}` : url;
   }
 
   function setupChrome() {
     document.documentElement.lang = "en";
     const brandLogo = document.querySelector(".brand-logo");
-    brandLogo.src = data.visuals.logo;
+    brandLogo.src = assetUrl(data.visuals.logo);
     brandLogo.alt = data.site.shortName || data.site.name;
     document.querySelector(".brand").setAttribute("href", href("home"));
 
@@ -92,7 +107,7 @@
   function renderHome() {
     return `
       <section class="image-hero home-landing">
-        <img src="${esc(data.visuals.hero)}" alt="" />
+        <img src="${esc(assetUrl(data.visuals.hero))}" alt="" />
         <div class="image-hero-content">
           <h1>${esc(data.site.name)}</h1>
           <strong>${esc(data.site.tagline)}</strong>
@@ -179,13 +194,13 @@
   function renderLeadPerson(person) {
     return `
       <article class="lead-person">
-        <a class="card-link" href="${esc(versioned(`person-${person.slug}.html`))}" aria-label="Open ${esc(person.name)} profile"></a>
+        <a class="card-link" href="${esc(personHref(person.slug))}" aria-label="Open ${esc(person.name)} profile"></a>
         <div>
           <h2>${esc(person.name)}</h2>
           <p>${esc(person.position)}</p>
           <small><a class="email-link" href="${person.email.includes("@") ? `mailto:${esc(person.email)}` : "#"}">${esc(person.email)}</a></small>
         </div>
-        ${person.photo ? `<img src="${esc(person.photo)}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder">${esc(person.name.charAt(0))}</div>`}
+        ${person.photo ? `<img src="${esc(assetUrl(person.photo))}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder">${esc(person.name.charAt(0))}</div>`}
       </article>
     `;
   }
@@ -193,7 +208,7 @@
   function renderMemberRow(person) {
     return `
       <article class="member-row">
-        <a class="card-link" href="${esc(versioned(`person-${person.slug}.html`))}" aria-label="Open ${esc(person.name)} profile"></a>
+        <a class="card-link" href="${esc(personHref(person.slug))}" aria-label="Open ${esc(person.name)} profile"></a>
         <div>
           <h2>${esc(person.name)}</h2>
           <p>${esc(person.position)}</p>
@@ -208,7 +223,7 @@
       ${pageHero("People", person.name, person.position)}
       <section class="section person-detail">
         <aside>
-          ${person.photo ? `<img src="${esc(person.photo)}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder large">${esc(person.name.charAt(0))}</div>`}
+          ${person.photo ? `<img src="${esc(assetUrl(person.photo))}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder large">${esc(person.name.charAt(0))}</div>`}
           <p>${esc(person.address)}</p>
           <a href="${person.email.includes("@") ? `mailto:${esc(person.email)}` : "#"}">${esc(person.email)}</a>
         </aside>
@@ -246,7 +261,7 @@
             ${item.text ? `<p>${esc(item.text)}</p>` : `<p>Content will be updated as the group website develops.</p>`}
           </div>
           <figure>
-            <img src="${esc(item.image || data.visuals.research)}" alt="" />
+            <img src="${esc(assetUrl(item.image || data.visuals.research))}" alt="" />
           </figure>
         </section>
       `))}
@@ -307,10 +322,10 @@
           <p>${esc(item.text)}</p>
           <div class="link-row">
             ${item.url ? `<a class="text-link" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.urlLabel || "Learn more")}</a>` : ""}
-            ${item.flyerUrl ? `<a class="text-link secondary" href="${esc(item.flyerUrl)}" target="_blank" rel="noopener">PDF</a>` : ""}
+            ${item.flyerUrl ? `<a class="text-link secondary" href="${esc(assetUrl(item.flyerUrl))}" target="_blank" rel="noopener">PDF</a>` : ""}
           </div>
         </div>
-        <img src="${esc(item.image || data.visuals.news)}" alt="" />
+        <img src="${esc(assetUrl(item.image || data.visuals.news))}" alt="" />
       </article>
     `;
   }
