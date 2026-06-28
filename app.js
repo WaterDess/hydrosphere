@@ -3,7 +3,7 @@
   const app = document.getElementById("app");
   const page = document.body.dataset.page || "home";
   const personSlug = document.body.dataset.person || "";
-  const SITE_VERSION = "research-visuals-1";
+  const SITE_VERSION = "join-toc-1";
 
   const nav = [
     ["news", "News"],
@@ -332,7 +332,7 @@
 
   function renderJoin() {
     const tocItems = [
-      { id: "global-research-program", label: "Global Research Program" },
+      { id: "global-research-program", label: "Research Program" },
       { id: "phd-admission", label: "PhD Admission" }
     ];
 
