@@ -5,6 +5,7 @@ window.TANG_SITE = {
     unit: "Department of Earth System Science, Tsinghua University",
     tagline: "Advancing water sciences for planetary health and sustainable development",
     summary: "THU Global Change Hydrology (GCH) Group is an interdisciplinary research group at the Department of Earth System Science, Tsinghua University, dedicated to deepening understanding of the impacts of global change on water systems and solutions.",
+    missionIntro: "Our mission is to advance water sciences for planetary health and sustainable development. To deliver on this mission and achieve our core objectives, we commit to the following priorities:",
     email: "tangqh@tsinghua.edu.cn",
     website: "https://faculty.dess.tsinghua.edu.cn/tangqiuhong/en/index.htm"
   },
@@ -28,6 +29,7 @@ window.TANG_SITE = {
       slug: "qiuhong-tang",
       name: "Qiuhong Tang",
       position: "Professor; Principal Investigator",
+      group: "faculty",
       address: "Department of Earth System Science, Tsinghua University",
       email: "tangqh@tsinghua.edu.cn",
       photo: "./public/assets/tang-qiuhong-1.jpg",
@@ -56,6 +58,7 @@ window.TANG_SITE = {
       slug: "ruiyu-zhao",
       name: "Ruiyu Zhao",
       position: "Shuimu Tsinghua Scholar",
+      group: "research-staff",
       address: "Department of Earth System Science, Tsinghua University",
       email: "To be updated",
       photo: "",
@@ -67,7 +70,8 @@ window.TANG_SITE = {
     {
       slug: "dawei-peng",
       name: "Dawei Peng",
-      position: "Scholar",
+      position: "Postdoctoral Fellow",
+      group: "research-staff",
       address: "Department of Earth System Science, Tsinghua University",
       email: "To be updated",
       photo: "",
@@ -80,6 +84,7 @@ window.TANG_SITE = {
       slug: "ying",
       name: "Ying Yan",
       position: "Group member",
+      group: "member",
       address: "Department of Earth System Science, Tsinghua University",
       email: "To be updated",
       photo: "",
@@ -132,6 +137,27 @@ window.TANG_SITE = {
       image: "./public/assets/news-hydrosphere-satellite.png"
     },
     {
+      date: "2026-06-30 10:30-11:30",
+      type: "Seminar",
+      title: "Linking Global Cycles Across Scales Based on Ecohydrological Optimality for the Water Balance",
+      text: "Allen Hunt will give a seminar on ecohydrological principles, water balance, and global-scale hydrological fluxes.",
+      image: "./public/assets/seminar-allen-hunt-20260630.jpg"
+    },
+    {
+      date: "2026-06-11 15:00-17:00",
+      type: "Seminar",
+      title: "Cast3: Translating numerical weather prediction principles into data-driven forecasting",
+      text: "Congyi Nai will present Cast3, a generative forecasting framework that absorbs numerical weather prediction knowledge for data-driven Earth system modelling.",
+      image: "./public/assets/seminar-congyi-nai-20260611.jpg"
+    },
+    {
+      date: "2026-06-11 15:00-17:00",
+      type: "Seminar",
+      title: "Spatial Generalization Tests for Machine Learning-based Weather Models to Assess Physical Consistency",
+      text: "Maren Höver will discuss spatial generalization tests for machine learning-based weather and climate models.",
+      image: "./public/assets/seminar-maren-hover-20260611.jpg"
+    },
+    {
       date: "2026",
       type: "Congratulations",
       title: "Dr. Ruiyu Zhao selected as the Shuimu Tsinghua Scholar",
@@ -139,54 +165,6 @@ window.TANG_SITE = {
       url: "https://postdoctor.tsinghua.edu.cn/info/zxtz/2174",
       urlLabel: "Read announcement",
       image: "./public/assets/visual-join.svg"
-    },
-    {
-      date: "Forum 565",
-      type: "Seminar",
-      title: "Prof. Xu Liang: Land Surface Modeling at a Crossroads",
-      text: "Land Surface Modeling at a Crossroads: Progress, Complexity, and the Road to Reliability and Robustness.",
-      url: "https://www.dess.tsinghua.edu.cn/info/1176/6962.htm",
-      urlLabel: "Open seminar page"
-    },
-    {
-      date: "Forum 563",
-      type: "Seminar",
-      title: "Global Change Science Bauhinia Forum No. 563",
-      text: "Historical seminar item to be linked to the Department of Earth System Science event page.",
-      url: "https://www.dess.tsinghua.edu.cn/info/1176/6940.htm",
-      urlLabel: "Open seminar page"
-    },
-    {
-      date: "Forum 562",
-      type: "Seminar",
-      title: "Global Change Science Bauhinia Forum No. 562",
-      text: "Historical seminar item to be linked to the Department of Earth System Science event page.",
-      url: "https://www.dess.tsinghua.edu.cn/info/1176/6936.htm",
-      urlLabel: "Open seminar page"
-    },
-    {
-      date: "Forum 561",
-      type: "Seminar",
-      title: "Global Change Science Bauhinia Forum No. 561",
-      text: "Historical seminar item to be linked to the Department of Earth System Science event page.",
-      url: "https://www.dess.tsinghua.edu.cn/info/1176/6934.htm",
-      urlLabel: "Open seminar page"
-    },
-    {
-      date: "Forum 549",
-      type: "Seminar",
-      title: "Global Change Science Bauhinia Forum No. 549",
-      text: "Historical seminar item to be linked to the Department of Earth System Science event page.",
-      url: "https://www.dess.tsinghua.edu.cn/info/1176/6818.htm",
-      urlLabel: "Open seminar page"
-    },
-    {
-      date: "Forum 539",
-      type: "Seminar",
-      title: "Global Change Science Bauhinia Forum No. 539",
-      text: "Historical seminar item to be linked to the Department of Earth System Science event page.",
-      url: "https://www.dess.tsinghua.edu.cn/info/1176/6696.htm",
-      urlLabel: "Open seminar page"
     }
   ],
   join: {
@@ -194,6 +172,8 @@ window.TANG_SITE = {
     text: "The Tsinghua University Global Research Program provides a 6+ week immersive research experience for outstanding undergraduates and graduate students from top universities outside the Chinese Mainland, including those in Hong Kong, Macao, and Taiwan.",
     program: "2026 Tsinghua University Global Research Program",
     programUrl: "https://www.tsinghua.edu.cn/gjhz/dqyjyxx.htm",
-    phd: "For admission to the PhD program, please contact Prof. Qiuhong Tang."
+    phd: "For admission to the PhD program, please contact Prof. Qiuhong Tang.",
+    postdoc: "We are recruiting Postdocs and Research Associate. See details here.",
+    postdocUrl: "./public/assets/water-dessthu-postdoc.pdf"
   }
 };

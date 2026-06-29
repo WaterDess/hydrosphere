@@ -5,7 +5,7 @@
     "tagline": "Advancing water sciences for planetary health and sustainable development",
     "summary": "Short group introduction."
   },
-  "navigation": ["News", "Research", "Publications", "People", "About", "How to join?"],
+  "navigation": ["News", "People", "Publications", "Research", "About", "How to join?"],
   "people": [
     {
       "slug": "example",

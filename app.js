@@ -14,9 +14,9 @@
 
   const nav = [
     ["news", "News"],
-    ["research", "Research"],
-    ["publications", "Publications"],
     ["people", "People"],
+    ["publications", "Publications"],
+    ["research", "Research"],
     ["about", "About"],
     ["join", "How to join?"]
   ];
@@ -49,6 +49,14 @@
   function assetUrl(url) {
     if (!url || IS_FILE_PREVIEW || /^(https?:|mailto:|#)/.test(url)) return url;
     return url.startsWith("./") ? `${PUBLIC_BASE}${url.slice(2)}` : url;
+  }
+
+  function emailHref(email) {
+    return String(email || "").includes("@") ? `mailto:${esc(email)}` : "#";
+  }
+
+  function displayEmail(email) {
+    return String(email || "").includes("@") ? String(email).replace("@", " (at) ") : String(email || "");
   }
 
   function setupChrome() {
@@ -118,11 +126,11 @@
 
   function renderAbout() {
     return `
-      ${pageHero("About", "THU Global Change Hydrology Group", "A research group focused on water-cycle change and water security.")}
+      ${pageHero("About", "THU Global Change Hydrology Group", "")}
       <section class="section about-layout">
         <article class="large-copy">
           <p>${esc(data.site.summary)}</p>
-          <p>The group studies global change hydrology, water-cycle imbalance, water-risk monitoring and prediction, and transboundary water governance through modeling, remote sensing, data integration, and risk assessment.</p>
+          <p>${esc(data.site.missionIntro)}</p>
         </article>
         <div class="mission-list">
           ${list(data.mission, (item, index) => `
@@ -139,11 +147,13 @@
   function renderPeople() {
     const lead = data.people.find(isPrincipalInvestigator);
     const members = data.people.filter((person) => person !== lead);
-    const scholars = members.filter((person) => /scholar/i.test(person.position || ""));
-    const generalMembers = members.filter((person) => !scholars.includes(person));
+    const researchStaff = members.filter((person) => (person.group || "").toLowerCase() === "research-staff");
+    const graduateStudents = members.filter((person) => (person.group || "").toLowerCase() === "graduate-student");
+    const generalMembers = members.filter((person) => !researchStaff.includes(person) && !graduateStudents.includes(person));
     const tocItems = [
-      lead ? { id: "principal-investigator", label: "Principal Investigator" } : null,
-      scholars.length ? { id: "scholars", label: "Scholars" } : null,
+      lead ? { id: "faculty", label: "Faculty" } : null,
+      researchStaff.length ? { id: "postdoctoral-fellow-and-research-associate", label: "Postdoctoral Fellow and Research Associate" } : null,
+      { id: "graduate-student", label: "Graduate Student" },
       generalMembers.length ? { id: "members", label: "Members" } : null
     ].filter(Boolean);
 
@@ -152,22 +162,26 @@
         ${renderToc(tocItems)}
         <div class="people-content">
         ${lead ? `
-          <section class="people-block people-block-feature" id="principal-investigator">
-            ${renderPeopleBlockHeading("01", "Principal Investigator")}
+          <section class="people-block people-block-feature" id="faculty">
+            ${renderPeopleBlockHeading("01", "Faculty")}
             ${renderLeadPerson(lead)}
           </section>
         ` : ""}
-        ${scholars.length ? `
-          <section class="people-block" id="scholars">
-            ${renderPeopleBlockHeading("02", "Scholars")}
-            <div class="member-grid" aria-label="Scholars">
-              ${list(scholars, renderMemberRow)}
+        ${researchStaff.length ? `
+          <section class="people-block" id="postdoctoral-fellow-and-research-associate">
+            ${renderPeopleBlockHeading("02", "Postdoctoral Fellow and Research Associate")}
+            <div class="member-grid" aria-label="Postdoctoral Fellow and Research Associate">
+              ${list(researchStaff, renderMemberRow)}
             </div>
           </section>
         ` : ""}
+        <section class="people-block" id="graduate-student">
+          ${renderPeopleBlockHeading("03", "Graduate Student")}
+          <p class="empty-note">To be updated.</p>
+        </section>
         ${generalMembers.length ? `
           <section class="people-block" id="members">
-            ${renderPeopleBlockHeading("03", "Members")}
+            ${renderPeopleBlockHeading("04", "Members")}
             <div class="member-grid" aria-label="Group members">
               ${list(generalMembers, renderMemberRow)}
             </div>
@@ -193,14 +207,13 @@
 
   function renderLeadPerson(person) {
     return `
-      <article class="lead-person">
+      <article class="lead-person text-only-person">
         <a class="card-link" href="${esc(personHref(person.slug))}" aria-label="Open ${esc(person.name)} profile"></a>
         <div>
           <h2>${esc(person.name)}</h2>
           <p>${esc(person.position)}</p>
-          <small><a class="email-link" href="${person.email.includes("@") ? `mailto:${esc(person.email)}` : "#"}">${esc(person.email)}</a></small>
+          <small><a class="email-link" href="${emailHref(person.email)}">${esc(displayEmail(person.email))}</a></small>
         </div>
-        ${person.photo ? `<img src="${esc(assetUrl(person.photo))}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder">${esc(person.name.charAt(0))}</div>`}
       </article>
     `;
   }
@@ -226,7 +239,7 @@
           ${person.photo ? `<img src="${esc(assetUrl(person.photo))}" alt="${esc(person.name)}" />` : `<div class="avatar-placeholder large">${esc(person.name.charAt(0))}</div>`}
           <p class="profile-department">${esc(person.address)}</p>
           ${renderProfileTitles(person.position)}
-          <a href="${person.email.includes("@") ? `mailto:${esc(person.email)}` : "#"}">${esc(person.email)}</a>
+          <a href="${emailHref(person.email)}">${esc(displayEmail(person.email))}</a>
         </aside>
         <div class="detail-sections">
           ${renderDetailBlock("Research Interests", person.interests)}
@@ -240,7 +253,7 @@
 
   function renderProfileTitles(position) {
     const titles = String(position || "")
-      .split(/[;；]/)
+      .split(";")
       .map((item) => item.trim())
       .filter(Boolean);
 
@@ -344,11 +357,12 @@
   function renderNewsLine(item) {
     return `
       <article class="news-line">
-        <time>${esc(item.date)}</time>
         <div>
-          <span>${esc(item.type)}</span>
+          <span>${esc(item.type)}${item.date ? ` / ${esc(item.date)}` : ""}</span>
           <h3>${item.url ? `<a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.title)}</a>` : esc(item.title)}</h3>
+          ${item.text ? `<p>${esc(item.text)}</p>` : ""}
         </div>
+        ${item.image ? `<img src="${esc(assetUrl(item.image))}" alt="" />` : ""}
       </article>
     `;
   }
@@ -356,7 +370,8 @@
   function renderJoin() {
     const tocItems = [
       { id: "global-research-program", label: "Research Program" },
-      { id: "phd-admission", label: "PhD Admission" }
+      { id: "phd-admission", label: "PhD Admission" },
+      { id: "postdoctoral-fellow", label: "Postdoctoral Fellow" }
     ];
 
     return `
@@ -368,10 +383,22 @@
         <article class="content-section join-section" id="phd-admission">
           <h2>PhD admission</h2>
           <p>${esc(data.join.phd)}</p>
-          <a class="text-link" href="mailto:${esc(data.site.email)}">${esc(data.site.email)}</a>
+          <a class="text-link" href="mailto:${esc(data.site.email)}">${esc(displayEmail(data.site.email))}</a>
+        </article>
+        <article class="content-section join-section" id="postdoctoral-fellow">
+          <h2>Postdoctoral Fellow</h2>
+          <p>${renderInlineLink(data.join.postdoc, "here", data.join.postdocUrl)}</p>
         </article>
       `)}
     `;
+  }
+
+  function renderInlineLink(text, label, url) {
+    const source = String(text || "");
+    const index = source.lastIndexOf(label);
+    if (!url || index < 0) return esc(source);
+
+    return `${esc(source.slice(0, index))}<a href="${esc(assetUrl(url))}" target="_blank" rel="noopener">${esc(label)}</a>${esc(source.slice(index + label.length))}`;
   }
 
   function renderContact() {
@@ -380,7 +407,7 @@
         <article>
           <h2>Email</h2>
           <p>For academic communication and admission inquiries, please contact the group through Prof. Qiuhong Tang.</p>
-          <a class="text-link" href="mailto:${esc(data.site.email)}">${esc(data.site.email)}</a>
+          <a class="text-link" href="mailto:${esc(data.site.email)}">${esc(displayEmail(data.site.email))}</a>
         </article>
         <article>
           <h2>Faculty profile</h2>

@@ -519,6 +519,17 @@ body[data-page="about"] .page-hero p {
   border-bottom: 1px solid var(--border);
 }
 
+.news-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8.8em;
+  gap: 1.15em;
+  align-items: center;
+}
+
+.news-line:not(:has(img)) {
+  display: block;
+}
+
 .mission-list span,
 .publication time,
 .news-line time,
@@ -584,6 +595,7 @@ body[data-page="about"] .page-hero p {
 .publication p,
 .publication small,
 .news-feature p,
+.news-line p,
 .join-layout p,
 .detail-sections li,
 .person-detail aside p,
@@ -609,6 +621,11 @@ body[data-page="about"] .page-hero p {
   border: 1px solid var(--border);
   border-radius: 8px;
   transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.lead-person.text-only-person {
+  grid-template-columns: 1fr;
+  min-height: 5.5em;
 }
 
 .lead-person:hover {
@@ -761,6 +778,25 @@ body[data-page="about"] .page-hero p {
   border-color: var(--link-hover);
   box-shadow: 0 0 0.72em var(--link-glow);
   transform: translateY(-1px);
+}
+
+.news-line img {
+  width: 8.8em;
+  height: 5.7em;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 4px;
+}
+
+.news-line p {
+  max-width: 37em;
+  margin: 0.25em 0 0;
+}
+
+.empty-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.74em;
 }
 
 .card-link {
@@ -1058,6 +1094,7 @@ body[data-page="about"] .page-hero p {
   }
 
   .news-feature,
+  .news-line,
   .about-layout,
   .person-detail,
   .lead-person,
